@@ -16,18 +16,18 @@ using namespace std;
 const int N = 1e5 + 5;
 vector<pair<int, ll>> adj[N];
 int n, m;
-int main()
-{
-    int u, v;
-    ll w;
+int main() {
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
 #ifndef ONLINE_JUDGE
-    freopen("/mnt/c/Users/prsur/projects/helloworld/input.txt", "r", stdin);
-    freopen("/mnt/c/Users/prsur/projects/helloworld/output.txt", "w", stdout);
+  freopen("/mnt/c/Users/prsur/projects/helloworld/input.txt", "r", stdin);
+  freopen("/mnt/c/Users/prsur/projects/helloworld/output.txt", "w", stdout);
 #endif
-    cin >> n >> m;
-    for (int i = 0; i < m; i++)
-    {
-        cin >> u >> v >> w;
-        adj[u].push_back({v, w});
-    }
+  int u, v;
+  ll w;
+  cin >> n >> m;
+  for (int i = 0; i < m; i++) {
+    cin >> u >> v >> w;
+    adj[u].push_back({v, w});
+  }
 }

@@ -19,6 +19,7 @@ int main() {
   freopen("/mnt/c/Users/prsur/projects/helloworld/input.txt", "r", stdin);
   freopen("/mnt/c/Users/prsur/projects/helloworld/output.txt", "w", stdout);
 #endif
-  ios_base::sync_with_stdio(false);
-  cin.tie(NULL);
+int apples, applepieces;
+cin>>apples>>applepieces;
+cout<<(apples*3+applepieces)/2;
 }
