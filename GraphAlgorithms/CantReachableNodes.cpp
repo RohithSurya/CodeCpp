@@ -29,8 +29,8 @@ int main() {
   ios_base::sync_with_stdio(false);
   cin.tie(NULL);
 #ifndef ONLINE_JUDGE
-  freopen("/mnt/c/Users/prsur/projects/helloworld/input.txt", "r", stdin);
-  freopen("/mnt/c/Users/prsur/projects/helloworld/output.txt", "w", stdout);
+  freopen("input.txt", "r", stdin);
+  freopen("output.txt", "w", stdout);
 #endif
   REP(i, 1, n + 1, 1) visited[i] = false;
   int u, v;
