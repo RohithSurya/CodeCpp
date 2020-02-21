@@ -16,8 +16,8 @@ using namespace std;
 const int N = 1e5 + 5;  // Change according to needs
 int main() {
 #ifndef ONLINE_JUDGE
-  freopen("/mnt/c/Users/prsur/projects/helloworld/input.txt", "r", stdin);
-  freopen("/mnt/c/Users/prsur/projects/helloworld/output.txt", "w", stdout);
+  freopen("input.txt", "r", stdin);
+  freopen("output.txt", "w", stdout);
 #endif
   ios_base::sync_with_stdio(false);
   cin.tie(NULL);
