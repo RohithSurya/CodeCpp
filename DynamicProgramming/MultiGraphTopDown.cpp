@@ -34,8 +34,8 @@ int main() {
   int u, v;
   ll w;
 #ifndef ONLINE_JUDGE
-  freopen("/mnt/c/Users/prsur/projects/helloworld/input.txt", "r", stdin);
-  freopen("/mnt/c/Users/prsur/projects/helloworld/output.txt", "w", stdout);
+  freopen("input.txt", "r", stdin);
+  freopen("output.txt", "w", stdout);
 #endif
   cin >> n >> m;
   for (int i = 0; i < m; i++) {

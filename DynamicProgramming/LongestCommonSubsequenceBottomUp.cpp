@@ -19,8 +19,8 @@ int m[N][N];
 string s1, s2;
 int main() {
 #ifndef ONLINE_JUDGE
-  freopen("/mnt/c/Users/prsur/projects/helloworld/input.txt", "r", stdin);
-  freopen("/mnt/c/Users/prsur/projects/helloworld/output.txt", "w", stdout);
+  freopen("input.txt", "r", stdin);
+  freopen("/output.txt", "w", stdout);
 #endif
   cin >> s1 >> s2;
   REP(i, 0, s2.length() + 1, 1) { m[0][i] = 0; }

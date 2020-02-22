@@ -24,8 +24,8 @@ int main() {
   cin.tie(NULL);
   int rows;
 #ifndef ONLINE_JUDGE
-  freopen("/mnt/c/Users/prsur/projects/helloworld/input.txt", "r", stdin);
-  freopen("/mnt/c/Users/prsur/projects/helloworld/output.txt", "w", stdout);
+  freopen("input.txt", "r", stdin);
+  freopen("output.txt", "w", stdout);
 #endif
   cin >> rows;
   string st;

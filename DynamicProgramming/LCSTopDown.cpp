@@ -29,8 +29,8 @@ int c(int i, int j) {
 
 int main() {
 #ifndef ONLINE_JUDGE
-  freopen("/mnt/c/Users/prsur/projects/helloworld/input.txt", "r", stdin);
-  freopen("/mnt/c/Users/prsur/projects/helloworld/output.txt", "w", stdout);
+  freopen("input.txt", "r", stdin);
+  freopen("output.txt", "w", stdout);
 #endif
   cin >> s1 >> s2;
   REP(i, 0, s1.length() + 1, 1) {
