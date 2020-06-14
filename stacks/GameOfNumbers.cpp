@@ -44,7 +44,7 @@ void dfs(int u, int par);
 
 const int mod = 1'000'000'007;
 const int N = 3e5, M = N;
-int greaterThan[N];
+int greaterThan[N], lesserThan[N];
 
 vi g[N];
 int a[N];
@@ -69,13 +69,25 @@ int findJustLesserIndex(int index) {
 void solve() {
   si(n);
   Fo(i, 1, n + 1) si(a[i]);
-  stack<int> s1;
-  Fo(i,n+1,0) {
+  stack<int> s1, s2;
+  Fo(i,n,0) {
     while(!s1.empty() && a[s1.top()]<=a[i]) s1.pop();
     greaterThan[i] = s1.empty()?-1:s1.top();
     s1.push(i);
   }
-  Fo(i,1,n+1) if(greaterThan[i]==-1) cout<<-1<<" "; else cout<<a[greaterThan[i]]<<" ";
+  // Fo(i,1,n+1) if(greaterThan[i]==-1) cout<<-1<<" "; else cout<<a[greaterThan[i]]<<" ";
+  // cout<<endl;
+  Fo(i,n,0) {
+    while(!s2.empty() && a[s2.top()]>=a[i]) s2.pop();
+    lesserThan[i] = s2.empty()?-1:s2.top();
+    s2.push(i);
+  }
+
+  // Fo(i,1,n+1) if(lesserThan[i]==-1) cout<<-1<<" "; else cout<<a[lesserThan[i]]<<" ";
+  // cout<<endl;
+  Fo(i,1,n+1) if(!(greaterThan[i]==-1) && !(lesserThan[greaterThan[i]]==-1)) cout<<a[lesserThan[greaterThan[i]]]<<" ";
+  else cout<<-1<<" ";
+
 }
 
 
