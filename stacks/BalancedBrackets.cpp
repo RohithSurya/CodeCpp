@@ -1,6 +1,6 @@
 /**
  * @author: Podugu Rohith Surya
- * @link: Link
+ * @link: https://www.hackerearth.com/practice/data-structures/stacks/basics-of-stacks/practice-problems/algorithm/balanced-brackets-3-4fc590c6/
  * @desc: Write something about problem
  * Input:
  * Output:
@@ -52,25 +52,32 @@ int a[N];
 
 void solve() {
   string str;
-  char c;
-  cin>>str;
-  if (str.length()&1) {
-    cout<<"NO"<<endl;
+  char c, top;
+  cin >> str;
+  if (str.length() & 1) {
+    cout << "NO" << endl;
     return;
   }
   // deb(str);
   stack<char> s;
-  fo(i,str.length()/2) {
-    s.push(str[i]);
-  }
-  Fo(i,str.length()/2,str.length()) {
-    char top = s.top();
-    char c = str[i];
-    if( !((top=='('&c==')') || (top=='['&c==']') || (top=='{'&c=='}')) ) { 
-      cout<<"NO"<<endl;
-      return;
-    } 
-    s.pop();
+  // {[(])}
+  fo(i, str.length()) {
+    if (str[i] == '(' || str[i] == '[' || str[i] == '{')
+      s.push(str[i]);
+    else {
+      if (s.empty()) {
+        cout<<"NO"<<endl;
+        return;
+      }
+      top = s.top();
+      c = str[i];
+      if (!((top == '(' & c == ')') || (top == '[' & c == ']') ||
+            (top == '{' & c == '}'))) {
+        cout << "NO" << endl;
+        return;
+      }
+      s.pop();
+    }
   }
   cout<<"YES"<<endl;
 }
