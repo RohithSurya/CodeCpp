@@ -1,6 +1,6 @@
 /**
  * @author: Podugu Rohith Surya
- * @link: https://www.hackerearth.com/practice/data-structures/stacks/basics-of-stacks/practice-problems/algorithm/circular-list-8e1319c9/
+ * @link: https://www.hackerearth.com/practice/data-structures/stacks/basics-of-stacks/practice-problems/algorithm/minimum-add-to-make-parentheses-valid-9cba6259/
  * @desc: Write something about problem
  * Input:
  * Output:
@@ -10,8 +10,7 @@ using namespace std;
 
 #define gc getchar_unlocked
 #define fo(i, n) for (__typeof(n) i = 0; i < n; i++)
-#define Fo(i, k, n) \
-  for (__typeof(n) i = k; k < n ? i < n : i > n; k < n ? i += 1 : i -= 1)
+#define Fo(i, k, n) for (__typeof(n) i = k; k < n ? i < n : i > n; k < n ? i += 1 : i -= 1)
 #define ll long long
 #define si(x) scanf("%d", &x)
 #define sl(x) scanf("%lld", &x)
@@ -44,34 +43,25 @@ void ipgraph(int n, int m);
 void dfs(int u, int par);
 
 const int mod = 1'000'000'007;
-const int N = 1e6, M = N;
+const int N = 3e5, M = N;
 
 int n, m;
 
 vi g[N];
-int a[N + 5], isPrime[N + 5];
+int a[N];
 
 void solve() {
-  cin >> n;
-  fo(i, n) cin >> a[i];
-  fo(i, N + 1) { isPrime[i] = 1; }
-  for (int i = 2; i * i <= N; i++) {
-    if (isPrime[i] == 1) {
-      for (int j = i * i; j <= N; j += i) {
-        isPrime[j] = 0;
-      }
-    }
+  string st;
+  cin>>st;
+  int cnt = 0;
+  int ans=0;
+  for(char c: st) {
+    if (c=='(') cnt++;
+    else if (c==')' && cnt==0) ans++;
+    else cnt--;
   }
-
-  fo(i, n) {
-    if (isPrime[a[i]])
-      cout << a[i] << " ";
-  }
-  cout << endl;
-  Fo(i, n - 1, -1) {
-    if (!isPrime[a[i]])
-      cout << a[i] << " ";
-  }
+  ans+=cnt;
+  cout<<ans;
 }
 
 int main() {
