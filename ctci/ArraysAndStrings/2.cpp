@@ -52,7 +52,7 @@ int a[N];
 
 void solve() {
   string s1, s2;
-  unordered_map<char, int> m1, m2;
+  unordered_map<char, int> m1;
   cin >> s1 >> s2;
   if (s1.length() != s2.length()) {
     cout << "FALSE";
@@ -60,11 +60,11 @@ void solve() {
   }
   fo(i, s1.length()) {
     m1[s1[i]]++;
-    m2[s2[i]]++;
   }
-  for (char c : s1) {
-    if (m1[c] != m2[c]) {
-      cout << "FALSE";
+  for (char c : s2) {
+    m1[c]--;
+    if(m1[c]<0) {
+      cout<<"FALSE";
       return;
     }
   }
