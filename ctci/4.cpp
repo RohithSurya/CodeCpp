@@ -70,6 +70,38 @@ void solve() {
   cout << "Palindrome";
 }
 
+int getCharIndex(char c) {
+  if (c >= 'a' && c <= 'z')
+    return c - 'a';
+  else if (c >= 'A' && c <= 'Z')
+    return c - 'A';
+  return -1;
+}
+
+void toggle(int& val, int index) {
+  if (index == -1)
+    return;
+  int targetBit = 1 << index;
+  val ^= targetBit;
+}
+
+void bitVectorOptimization() {
+  string s;
+  int i;
+  int val;
+  cin >> s;
+  for (char c : s) {
+    i = getCharIndex(c);
+    toggle(val, i);
+  }
+
+  if (val == 0 || !((val - 1) & val)) {
+    cout << "Palindrome";
+  } else {
+    cout << "Not a palindrome";
+  }
+}
+
 int main() {
 #ifndef ONLINE_JUDGE
   freopen("input.txt", "r", stdin);
@@ -77,9 +109,8 @@ int main() {
 #endif
   ios_base::sync_with_stdio(0), cin.tie(0), cout.tie(0);
   int t = 1;
-  cout<<(char)-1;
   while (t--) {
-    solve();
+    bitVectorOptimization();
   }
 }
 
