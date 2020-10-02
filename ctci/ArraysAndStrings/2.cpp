@@ -63,12 +63,28 @@ void solve() {
   }
   for (char c : s2) {
     m1[c]--;
-    if(m1[c]<0) {
-      cout<<"FALSE";
+    if (m1[c] < 0) {
+      cout << "FALSE";
       return;
     }
   }
   cout << "TRUE";
+}
+
+void compareWithSorting() {
+  string s1, s2;
+  cin >> s1 >> s2;
+  if (s1.length() != s2.length()) {
+    cout << "FALSE";
+    return;
+  }
+  sort(s1.begin(), s1.end());
+  sort(s2.begin(), s2.end());
+  if (s1.compare(s2) == 0) {
+    cout << "TRUE";
+  } else {
+    cout << "FALSE";
+  }
 }
 
 int main() {
