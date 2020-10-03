@@ -55,25 +55,49 @@ void swapOnLength(string& s1, string& s2) {
     s1.swap(s2);
 }
 
+void oneEdit(string s1, string s2) {
+  swapOnLength(s1, s2);
+  int index1 = 0, index2 = 0;
+  bool isOneEdit = false;
+  while (index2 < s2.length()) {
+    if (s1[index1] == s2[index2]) {
+      index1++;
+      index2++;
+    } else {
+      if (isOneEdit) {
+        cout << "FALSE";
+        return;
+      }
+      isOneEdit = true;
+      index1++;
+    }
+  }
+  cout << "TRUE";
+}
+
+void oneReplace(string s1, string s2) {
+  bool isOneEdit = false;
+  int index1 = 0;
+  while (index1 < s1.length()) {
+    if (s1[index1] != s2[index1]) {
+      if (isOneEdit) {
+        cout << "FALSE";
+        return;
+      }
+      isOneEdit = true;
+    }
+    index1++;
+  }
+  cout << "TRUE";
+}
+
 void solve() {
   string s1, s2;
   cin >> s1 >> s2;
-  swapOnLength(s1, s2);
-  int matchedIndex = 0;
-  int stillMatching = s1.length();
-  fo(i, s2.length()) {
-    Fo(j, matchedIndex, s1.length()) {
-      if (s1[j] == s2[i]) {
-        matchedIndex = j + 1;
-        stillMatching--;
-        break;
-      }
-    }
-  }
-  if (stillMatching <= 1) {
-    cout << "TRUE";
-  } else {
-    cout << "FALSE";
+  if (s1.length() == s2.length()) {
+    oneReplace(s1, s2);
+  } else if (abs((int)(s1.length() - s2.length())) == 1) {
+    oneEdit(s1, s2);
   }
 }
 
