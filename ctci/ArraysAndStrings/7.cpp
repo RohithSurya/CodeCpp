@@ -5,8 +5,6 @@
  * Input:
  * Output:
  **/
-
-// TODO: Combine both solutions and merge into one.
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -50,57 +48,45 @@ const int N = 3e5, M = N;
 int n, m;
 
 vi g[N];
-int a[N];
-
-void swapOnLength(string& s1, string& s2) {
-  if (s1.length() < s2.length())
-    s1.swap(s2);
-}
-
-void oneEdit(string s1, string s2) {
-  swapOnLength(s1, s2);
-  int index1 = 0, index2 = 0;
-  bool isOneEdit = false;
-  while (index2 < s2.length()) {
-    if (s1[index1] == s2[index2]) {
-      index1++;
-      index2++;
-    } else {
-      if (isOneEdit) {
-        cout << "FALSE";
-        return;
-      }
-      isOneEdit = true;
-      index1++;
+vector<vector<int>> a;
+void printArray(vector<vector<int>>& a) {
+  fo(i, n) {
+    fo(j, n) {
+      cout << a[i][j] << " ";
     }
+    cout << endl;
   }
-  cout << "TRUE";
-}
-
-void oneReplace(string s1, string s2) {
-  bool isOneEdit = false;
-  int index1 = 0;
-  while (index1 < s1.length()) {
-    if (s1[index1] != s2[index1]) {
-      if (isOneEdit) {
-        cout << "FALSE";
-        return;
-      }
-      isOneEdit = true;
-    }
-    index1++;
-  }
-  cout << "TRUE";
 }
 
 void solve() {
-  string s1, s2;
-  cin >> s1 >> s2;
-  if (s1.length() == s2.length()) {
-    oneReplace(s1, s2);
-  } else if (abs((int)(s1.length() - s2.length())) == 1) {
-    oneEdit(s1, s2);
+  cin >> n;
+  int x;
+  cout << "==================Input===========================" << endl;
+  fo(i, n) {
+    vector<int> v1;
+    fo(j, n) {
+      cin >> x;
+      v1.push_back(x);
+    }
+    a.push_back(v1);
   }
+
+  printArray(a);
+
+  int t;
+
+  cout << "==================Output===========================" << endl;
+
+  fo(i, n / 2) {
+    Fo(j, i, n - i - 1) {
+      t = a[i][j];
+      a[i][j] = a[n - j - 1][i];
+      a[n - j - 1][i] = a[n - i - 1][n - j - 1];
+      a[n - i - 1][n - j - 1] = a[j][n - i - 1];
+      a[j][n - i - 1] = t;
+    }
+  }
+  printArray(a);
 }
 
 int main() {

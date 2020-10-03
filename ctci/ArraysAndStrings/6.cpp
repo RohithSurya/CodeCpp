@@ -5,8 +5,6 @@
  * Input:
  * Output:
  **/
-
-// TODO: Combine both solutions and merge into one.
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -52,55 +50,27 @@ int n, m;
 vi g[N];
 int a[N];
 
-void swapOnLength(string& s1, string& s2) {
-  if (s1.length() < s2.length())
-    s1.swap(s2);
-}
-
-void oneEdit(string s1, string s2) {
-  swapOnLength(s1, s2);
-  int index1 = 0, index2 = 0;
-  bool isOneEdit = false;
-  while (index2 < s2.length()) {
-    if (s1[index1] == s2[index2]) {
-      index1++;
-      index2++;
-    } else {
-      if (isOneEdit) {
-        cout << "FALSE";
-        return;
-      }
-      isOneEdit = true;
-      index1++;
-    }
-  }
-  cout << "TRUE";
-}
-
-void oneReplace(string s1, string s2) {
-  bool isOneEdit = false;
-  int index1 = 0;
-  while (index1 < s1.length()) {
-    if (s1[index1] != s2[index1]) {
-      if (isOneEdit) {
-        cout << "FALSE";
-        return;
-      }
-      isOneEdit = true;
-    }
-    index1++;
-  }
-  cout << "TRUE";
-}
-
 void solve() {
-  string s1, s2;
-  cin >> s1 >> s2;
-  if (s1.length() == s2.length()) {
-    oneReplace(s1, s2);
-  } else if (abs((int)(s1.length() - s2.length())) == 1) {
-    oneEdit(s1, s2);
+  string s;
+  cin >> s;
+  char prevChar = s[0];
+  string result;
+  result.reserve(s.length() + 1);
+  int cnt = 1;
+  Fo(i, 1, s.length()) {
+    if (prevChar == s[i])
+      cnt++;
+    else {
+      result += prevChar + to_string(cnt);
+      prevChar = s[i];
+      cnt = 1;
+    }
   }
+  result += prevChar + to_string(cnt);
+  if (result.length() >= s.length())
+    cout << s;
+  else
+    cout << result;
 }
 
 int main() {
