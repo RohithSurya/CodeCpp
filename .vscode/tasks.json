@@ -5,7 +5,7 @@
         "type": "shell",
         "label": "g++ build active file",
         "command": "/usr/bin/g++",
-        "args": ["-g", "${file}", "-o", "/home/surya/CodeCpp/a.out"],
+        "args": ["-g", "${file}", "-o", "/home/rosu/CodeCpp/a.out"],
         "options": {
           "cwd": "/usr/bin"
         },
